@@ -44,6 +44,43 @@
                             </div>
 
                             <div class="form-group row">
+                                <label for="identification_type" class="col-md-4 col-form-label text-md-right">Tipo de identifiación</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" name="identification_type" id="identification_type">
+                                        <option value="1">Cédula</option>
+                                        <option value="2">Pasaporte</option>
+                                    </select>
+                                    @error('identification_type')
+                                        <small class="text-danger">{{$message}}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                        
+                            <div class="form-group row">
+                                <label for="identification_number" class="col-md-4 col-form-label text-md-right">Número de identificación</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" value="{{old('identification_number')}}" name="identification_number" id="identification_number" placeholder="Número de identificación">
+                                    @error('identification_number')
+                                        <small class="text-danger">{{$message}}</small>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="role" class="col-md-4 col-form-label text-md-right">Rol</label>
+
+                                <div class="col-md-6">
+                                    <select class="form-control" name="role" id="role">
+                                        <option value="1">Vigilante</option>
+                                        <option value="2">Usuario UAM</option>
+                                    </select>
+                                    @error('role')
+                                        <small class="text-danger">{{$message}}</small>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Teléfono') }}</label>
 
                                 <div class="col-md-6">

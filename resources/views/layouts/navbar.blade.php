@@ -1,9 +1,8 @@
-@extends('layouts.app')
 
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'ParkingUAM') }}
+        <a class="navbar-brand" href="#">
+            ParkingUAM
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
@@ -13,6 +12,30 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
 
+                <!-- Parqueaderos -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Parqueaderos
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Vagón</a>
+                        <a class="dropdown-item" href="#">Av. Santander</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Parque estudiantes</a>
+                        <a class="dropdown-item" href="#">Cúpula</a>
+                    </div>
+                </li>
+
+                <!-- Vigilantes -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Vigilantes
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="{{route('user.index')}}">Listar</a>
+                        <a class="dropdown-item" href="{{route('user.create')}}">Registrar</a>
+                    </div>
+                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->
