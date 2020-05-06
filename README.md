@@ -85,6 +85,9 @@ npm install
 composer install
 
 create .env file from .env.example file
+
 Create the parkingUAM database and modify the .env file to match
 
 php artisan migrate
+
+php artisan key:generate
