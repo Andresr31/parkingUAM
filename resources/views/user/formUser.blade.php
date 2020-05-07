@@ -66,7 +66,7 @@
         @enderror
     </div>
 
-    <div class="form-group row">
+    <div class="form-group">
         <label for="password-confirm">Confirmar contraseña</label>
         <input id="password-confirm" type="password" class="form-control" name="password_confirm" required autocomplete="new-password">
     </div>

@@ -30,7 +30,7 @@ class StoreUserPost extends FormRequest
             'identification_number' => 'required|min:8|max:12',
             'role' => 'required',
             'phone' => 'required|min:7',
-            'password' => 'required|min:8|max:12',
+            'password' => 'required|min:8',
         ];
     }
 }
