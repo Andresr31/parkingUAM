@@ -50,8 +50,8 @@
                 {{$user->identification_number}}
             </td>
             <td>
-                <a class="btn btn-sm btn-info" href="{{route('user.show', $user->id)}}">Ver</a>
-                <a class="btn btn-sm btn-warning" href="{{route('user.edit', $user->id)}}">Editar</a>
+                <a class="btn btn-sm btn-info" href="{{route('user.show', $user)}}">Ver</a>
+                <a class="btn btn-sm btn-warning" href="{{route('user.edit', $user)}}">Editar</a>
                 <button data-toggle="modal" data-target="#eliminarModal" data-id="{{$user->id}}" class="btn btn-sm btn-danger" type="button">Eliminar</button>
             </td>
         </tr>
