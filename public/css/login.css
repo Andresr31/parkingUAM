@@ -2,8 +2,8 @@
     margin: 0;
     padding: 0;
     height: 100vh;
-    /* background: #b3b3b3; */
-    background-image: url(../images/fondoLogin.png);
+    background: #fcff68;
+    /* background-image: url(../images/fondoLogin.png); */
     /* background-repeat: no-repeat; */
     background-size: cover;
     background-repeat: no-repeat;
