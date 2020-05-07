@@ -6,6 +6,8 @@
 
     <h1 class="text-center">Registrar vigilante</h1>
 
+    @include("layouts.validation-error")
+
     <form action="{{ route('user.store') }}" method="POST">
         @include('user.formUser')
         <a class="btn btn-info" href="{{route('user.index')}}">Regresar</a>
