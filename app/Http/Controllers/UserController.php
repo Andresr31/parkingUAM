@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreUserPost;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -37,7 +38,12 @@ class UserController extends Controller
      */
     public function store(StoreUserPost $request)
     {
-        User::create($request->validated());
+        $user = User::create($request->validated());
+
+        $user->password = Hash::make($user->password);
+
+        $user->save();
+
         return back()->with('status', 'El registro se ha hecho con éxito.');
     }
 
@@ -55,12 +61,12 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view("user.edit", ['user'=>$user]);
     }
 
     /**
@@ -70,9 +76,16 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreUserPost $request, User $user)
     {
         //
+        $user->update($request->validated());
+
+        $user->password = Hash::make($user->password);
+
+        $user->save();
+
+        return back()->with('status', 'El vigilante se ha modificado con éxito.');
     }
 
     /**
@@ -81,8 +94,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return back()->with('status', 'El registro se ha eliminado con éxito.');
     }
 }

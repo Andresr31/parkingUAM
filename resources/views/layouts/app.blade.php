@@ -32,9 +32,14 @@
 
 </head>
 <body>
-    @include('layouts.navbar')
-    <div id="app" class="container">
+    @auth  
+        @include('layouts.navbar')
+        <div id="app" class="container">
+            @yield('content')
+        </div>
+    @else
         @yield('content')
-    </div>
+    @endauth
+    
 </body>
 </html>
