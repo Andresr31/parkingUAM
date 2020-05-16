@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Route::resource('user', 'UserController');
+Route::resource('parking_lot', 'Parking_lotController');
 
 Auth::routes();
 

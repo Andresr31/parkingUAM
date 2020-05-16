@@ -12,6 +12,11 @@ class Parking_lot extends Model
      * @var array
      */
     protected $fillable = [
-        'status'
+        'name','status'
     ];
+
+    public function parking_spots()
+    {
+        return $this->hasMany('App\Parking_spot');
+    }
 }

@@ -15,7 +15,8 @@ class CreateParkingLotsTable extends Migration
     {
         Schema::create('parking_lots', function (Blueprint $table) {
             $table->id();
-            $table->string('status'); // Verificar tipo de dato
+            $table->string('name');
+            $table->enum('status',['available','occupied'])->default('available'); // Verificar tipo de dato
             $table->timestamps();
         });
     }

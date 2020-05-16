@@ -18,11 +18,8 @@
                       Parqueaderos
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Vagón</a>
-                        <a class="dropdown-item" href="#">Av. Santander</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Parque estudiantes</a>
-                        <a class="dropdown-item" href="#">Cúpula</a>
+                        <a class="dropdown-item" href="{{route('parking_lot.index')}}">Listar</a>
+                        <a class="dropdown-item" href="{{ route('parking_lot.create') }}">Registrar</a>
                     </div>
                 </li>
 
