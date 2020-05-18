@@ -1,13 +1,12 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
 @section('title', 'ParkingUAM - Parqueaderos')
 
 @section('content')
 
-<h1 class="text-center mb-4">Parqueaderos</h1>
+<h1 class="text-center">Parqueaderos</h1>
 
-<a class="btn btn-success btn-block mt-4" href="{{route('parking_lot.create')}}">Registrar parqueadero</a>
-<a class="btn btn-success btn-block  mb-3" href="{{route('parking_spot.create')}}">Registrar espacio</a>
+<a class="btn btn-success btn-block mt-3 mb-3" href="{{route('parking_lot.create')}}">Registrar parqueadero</a>
 
 <table class="table">
     <thead>
@@ -40,7 +39,7 @@
                 <a class="btn btn-sm btn-info" href="{{route('parking_lot.show', $parking_lot)}}">Ver</a>
                 <a class="btn btn-sm btn-warning" href="{{route('parking_lot.edit', $parking_lot)}}">Editar</a>
                 <button data-toggle="modal" data-target="#eliminarModal" data-id="{{$parking_lot->id}}" class="btn btn-sm btn-danger" type="button">Eliminar</button>
-                
+                <a class="btn btn-sm btn-dark" href="{{route('parking_lot.edit', $parking_lot)}}">Agregar espacio</a>
             </td>
         </tr>
         @endforeach
@@ -85,4 +84,4 @@
     }
 </script>
 
-@endsection
+@endsection --}}
