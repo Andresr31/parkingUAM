@@ -5,10 +5,10 @@
 @section('content')
 
 <h1 class="text-center mb-4">Parqueaderos</h1>
-
+@role('admin')
 <a class="btn btn-success btn-block mt-4" href="{{route('parking_lot.create')}}">Registrar parqueadero</a>
 <a class="btn btn-success btn-block  mb-3" href="{{route('parking_spot.create')}}">Registrar espacio</a>
-
+@endrole
 <table class="table">
     <thead>
         <td>
@@ -38,9 +38,10 @@
             </td>
             <td>
                 <a class="btn btn-sm btn-info" href="{{route('parking_lot.show', $parking_lot)}}">Ver</a>
+                @role('admin')
                 <a class="btn btn-sm btn-warning" href="{{route('parking_lot.edit', $parking_lot)}}">Editar</a>
                 <button data-toggle="modal" data-target="#eliminarModal" data-id="{{$parking_lot->id}}" class="btn btn-sm btn-danger" type="button">Eliminar</button>
-                
+                @endrole
             </td>
         </tr>
         @endforeach
@@ -48,6 +49,7 @@
 </table>
 {{$parking_lots->links()}}
 
+@role('admin')
 <div class="modal fade" id="eliminarModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -84,5 +86,5 @@
         })
     }
 </script>
-
+@endrole
 @endsection

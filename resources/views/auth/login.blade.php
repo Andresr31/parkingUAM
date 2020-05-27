@@ -51,7 +51,7 @@
 							<button type="submit" name="button" class="btn login_btn"><span><i class="fa fa-sign-in mr-3"></i></span>Entrar</button>
 							<div class="mt-4">
 								<div class="d-flex justify-content-center links">
-									<a href="#" class="link text-dark">¿Olvidaste la contraseña?</a>
+									<a href="{{route('password.request')}}" class="link text-dark">¿Olvidaste la contraseña?</a>
 								</div>
 							</div>
 						</div>

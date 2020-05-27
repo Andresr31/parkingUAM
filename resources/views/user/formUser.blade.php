@@ -38,8 +38,10 @@
     <div class="form-group">
         <label for="role">Rol</label>
         <select class="form-control" name="role" id="role">
-            <option value="1">Vigilante</option>
-            <option value="2">Usuario UAM</option>
+            <option value="">-- Seleccione un rol --</option>
+            @foreach(\App\Role::cursor() as $role)
+            <option value="{{$role->name}}" {{($user->hasRole($role->name))?'selected':''}}>{{ucfirst($role->name)}}</option>
+            @endforeach
         </select>
         @error('role')
             <small class="text-danger">{{$message}}</small>

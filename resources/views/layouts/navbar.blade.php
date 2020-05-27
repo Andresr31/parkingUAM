@@ -9,6 +9,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            @auth
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
 
@@ -19,10 +20,13 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="{{route('parking_lot.index')}}">Listar</a>
+                        @role('admin')
                         <a class="dropdown-item" href="{{ route('parking_lot.create') }}">Registrar</a>
+                        @endrole
                     </div>
                 </li>
 
+                @role('admin')
                 <!-- Vigilantes -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -33,7 +37,9 @@
                         <a class="dropdown-item" href="{{route('user.create')}}">Registrar</a>
                     </div>
                 </li>
+                @endrole
             </ul>
+            @endAuth
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">

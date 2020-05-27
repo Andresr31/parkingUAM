@@ -5,8 +5,9 @@
 @section('content')
 
 <h1 class="text-center">Vigilantes</h1>
-
+@role('admin')
 <a class="btn btn-success btn-block mt-3 mb-3" href="{{route('user.create')}}">Registrar vigilante</a>
+@endrole
 
 <table class="table">
     <thead>

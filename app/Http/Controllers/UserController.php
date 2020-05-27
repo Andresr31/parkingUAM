@@ -10,6 +10,16 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('role:admin')->only('create', 'store', 'edit', 'update','destroy');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -42,9 +52,14 @@ class UserController extends Controller
 
         $user->password = Hash::make($user->password);
 
-        $user->save();
+        if($user->save()){
+            if ($request->role) {
+                $user->syncRoles([$request->role]);
+            }
 
-        return back()->with('status', 'El registro se ha hecho con éxito.');
+            return back()->with('status', 'El registro se ha hecho con éxito.');
+        }
+        return back()->with('status', 'El registro no se puedo hacer correctamente.');
     }
 
     /**
@@ -83,9 +98,14 @@ class UserController extends Controller
 
         $user->password = Hash::make($user->password);
 
-        $user->save();
+        if($user->save()){
+            if ($request->role) {
+                $user->syncRoles([$request->role]);
+            }
 
-        return back()->with('status', 'El vigilante se ha modificado con éxito.');
+            return back()->with('status', 'El vigilante se ha modificado con éxito.');
+        }
+        return back()->with('status', 'La Modificación no se puedo hacer correctamente.');
     }
 
     /**

@@ -9,6 +9,16 @@ use App\Http\Requests\StoreParking_lot;
 class Parking_lotController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('role:admin')->only('create', 'store', 'edit', 'update','destroy');
+    }
+    
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
