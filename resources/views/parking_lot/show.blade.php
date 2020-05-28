@@ -3,72 +3,87 @@
 @section('title', 'ParkingUAM - Parqueaderos')
 
 @section('content')
-<div class="container py-4">
-    <div class="form-group">
-        <label for="name">Nombre</label>
-        <input readonly type="text" class="form-control" value="{{$parking_lot->name}}" name="name" id="name">
-    </div>
+<div class="back">
+    <div class="container py-4">
+        <div class="col-md-9 mr-auto ml-auto">
+            <div class="card-body bg-dark card-dark">
+                <h4 class="card-title h2 text-center">Ver registro</h4>
+                    <div class="col-md-10 my-4 text-light mr-auto ml-auto">
+                        <div class="container py-4">
+                            <div class="form-group">
+                                <label for="name">Nombre</label>
+                                <input readonly type="text" class="form-control" value="{{$parking_lot->name}}" name="name" id="name">
+                            </div>
 
-    <div class="form-group">
-        <label for="email">Estado</label>
-        <input readonly type="text" class="form-control" value="{{$parking_lot->status}}" name="status" id="status">
-    </div>
+                            <div class="form-group">
+                                <label for="email">Estado</label>
+                                <input readonly type="text" class="form-control" value="{{$parking_lot->status}}" name="status" id="status">
+                            </div>
 
-    <div class="form-group">
-        <label for="parking_spots">Espacios de parqueadero</label>
-        <table class="table">
-            <thead>
-                <td>
-                    Id
-                </td>
-                <td>
-                    Posicion
-                </td>
-                <td>
-                    Estado
-                </td>
-                <td>
-                    Acciones
-                </td>
-            </thead>
-            <tbody>
-                @foreach($parking_spots as $parking_spot)
-                <tr>
-                    <td>
-                        {{$parking_spot->id}}
-                    </td>
-                    <td>
-                        {{$parking_spot->position}}
-                    </td>
-                    <td class="row">
-                        <div class="pl-3 pr-3">
-                            {{$parking_spot->state}}
+                            <div class="form-group">
+                                <label for="parking_spots">Espacios de parqueadero</label>
+                                    <table class="table text-dark table-light">
+                                        <thead class="thead-dark bg-dark text-light">
+                                        <td>
+                                            Id
+                                        </td>
+                                        <td>
+                                            Posicion
+                                        </td>
+                                        <td>
+                                            Estado
+                                        </td>
+                                        <td>
+                                            Acciones
+                                        </td>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($parking_spots as $parking_spot)
+                                        <tr>
+                                            <td>
+                                                {{$parking_spot->id}}
+                                            </td>
+                                            <td>
+                                                {{$parking_spot->position}}
+                                            </td>
+                                            <td class="row">
+                                                <div class="pl-3 pr-3">
+                                                    {{$parking_spot->state}}
+                                                </div>
+                                                <div>
+                                                    <form method="POST" action="{{route('parking_spot.state', $parking_spot)}}">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <button type="submit" class="btn btn-sm btn-info">Cambiar</button>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-sm btn-info" href="{{route('parking_spot.show', $parking_spot)}}">Ver</a>
+                                                @role('admin')   
+                                                    <a class="btn btn-sm btn-warning" href="{{route('parking_spot.edit', $parking_spot)}}">Editar</a>
+                                                    <button data-toggle="modal" data-target="#eliminarModal" data-id="{{$parking_spot->id}}" class="btn btn-sm btn-danger" type="button">Eliminar</button>
+                                                @endrole
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                {{$parking_spots->links()}}
+                            </div>
+
+                            <a class="btn btn-block mr-auto ml-auto btn-outline-light mt-3" href="{{route('parking_lot.index')}}">Regresar</a>
+
                         </div>
-                        <div>
-                            <form method="POST" action="{{route('parking_spot.state', $parking_spot)}}">
-                                @csrf
-                                @method('PUT')
-                                <button type="submit" class="btn btn-sm btn-info">Cambiar</button>
-                            </form>
-                        </div>
-                    </td>
-                    <td>
-                        <a class="btn btn-sm btn-info" href="{{route('parking_spot.show', $parking_spot)}}">Ver</a>
-                        @role('admin')   
-                            <a class="btn btn-sm btn-warning" href="{{route('parking_spot.edit', $parking_spot)}}">Editar</a>
-                            <button data-toggle="modal" data-target="#eliminarModal" data-id="{{$parking_spot->id}}" class="btn btn-sm btn-danger" type="button">Eliminar</button>
-                        @endrole
-                      </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-        {{$parking_spots->links()}}
+                    </div>
+                </div>
+                
+        
+        </div>
     </div>
-
-    <a class="btn btn-info btn-block my-4" href="{{route('parking_lot.index')}}">Regresar</a>
-
-</div>
+    </div>
+    
+    
 
 
 <div class="modal fade" id="eliminarModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">

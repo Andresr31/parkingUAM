@@ -73,4 +73,6 @@
         <input id="password-confirm" type="password" class="form-control" name="password_confirm" required autocomplete="new-password">
     </div>
 
-    <input type="submit" value="Registrar" class="btn btn-success">
+    <div class="form-group pt-3">
+        <button type="submit" class="btn btn-block btn-outline-success">Registrar</button>
+    </div>
