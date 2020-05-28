@@ -91,3 +91,5 @@ Create the parkingUAM database and modify the .env file to match
 php artisan migrate
 
 php artisan key:generate
+
+php artisan db:seed
