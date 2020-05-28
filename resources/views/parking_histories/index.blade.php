@@ -15,11 +15,27 @@
               </button>
              </div>
            @endif
+           @if (count($parking_histories)==0)
+            <div class="alert alert-danger my-2" role="alert">
+               No se encuentran registros para la fecha seleccionada
+               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+             </div>
+           @endif
             <h4 class="card-title h2 text-center py-3">Historial de parqueos</h4>
-            <div class="row col-md-9 mr-auto ml-auto">
-                <div class="col">
+            <div class="col-md-9 mr-auto ml-auto">
+                <div class="row">
                     <a href="{{route('parking_history.create')}}"
                         class="btn btn-outline-light btn-block">{{ __('Registrar ingreso') }}</a>
+                </div>
+                <hr class="bg-light">
+                <div>
+                    <form action="{{route('parking_history.filter')}}" method="POST" class="row mt-2">
+                        @csrf
+                        <input type="date" id="date" name="date" value="{{date('Y-m-d')}}" max="{{date('Y-m-d')}}" class="col btn btn-outline-secondary mr-4" />
+                        <button type="submit" class="col btn btn-outline-light btn-block">Filtrar por fecha</button>   
+                    </form>
                 </div>
             </div>
             <div class="table-responsive col-md-10 mr-auto ml-auto py-3">

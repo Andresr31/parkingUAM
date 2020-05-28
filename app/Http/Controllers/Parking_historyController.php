@@ -82,7 +82,7 @@ class Parking_historyController extends Controller
      */
     public function edit(Parking_historie $parking_history)
     {
-        $users = User::where('role','useruam')->get();;
+        $users = User::where('role','useruam')->get();
         $parking_spots = Parking_spot::where("state",'Disponible')->get();
         return view("parking_histories.edit", ['parking_history'=>$parking_history,'users'=>$users, 'parking_spots'=>$parking_spots]);
     }
@@ -112,5 +112,15 @@ class Parking_historyController extends Controller
         $parking_history = Parking_historie::find($id);
         $parking_history->delete();
         return back()->with('status', 'El registro se ha eliminado con éxito.');
+    }
+
+    public function dateFilter(Request $date){
+
+       
+        $parking_histories = Parking_historie::where('created_at', 'like',request('date').'%')->orderBy('created_at','desc')->paginate(6);
+        
+        return view('parking_histories.index', ['parking_histories'=>$parking_histories]);
+
+
     }
 }

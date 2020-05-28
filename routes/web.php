@@ -26,6 +26,6 @@ Route::middleware('auth')->group(function(){
     Route::resource('parking_history', 'Parking_historyController');
 
     Route::get('/home', 'HomeController@index')->name('home');
-
+    Route::post('parking_history/filter','Parking_historyController@dateFilter')->name('parking_history.filter');
     Route::put('parking_spot/{parking_spot}/state', 'Parking_spotController@changeState')->name('parking_spot.state');
 });
