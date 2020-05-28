@@ -25,6 +25,9 @@
                     Posicion
                 </td>
                 <td>
+                    Estado
+                </td>
+                <td>
                     Acciones
                 </td>
             </thead>
@@ -37,11 +40,25 @@
                     <td>
                         {{$parking_spot->position}}
                     </td>
+                    <td class="row">
+                        <div class="pl-3 pr-3">
+                            {{$parking_spot->state}}
+                        </div>
+                        <div>
+                            <form method="POST" action="{{route('parking_spot.state', $parking_spot)}}">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit" class="btn btn-sm btn-info">Cambiar</button>
+                            </form>
+                        </div>
+                    </td>
                     <td>
                         <a class="btn btn-sm btn-info" href="{{route('parking_spot.show', $parking_spot)}}">Ver</a>
-                        <a class="btn btn-sm btn-warning" href="{{route('parking_spot.edit', $parking_spot)}}">Editar</a>
-                        <button data-toggle="modal" data-target="#eliminarModal" data-id="{{$parking_spot->id}}" class="btn btn-sm btn-danger" type="button">Eliminar</button>
-                    </td>
+                        @role('admin')   
+                            <a class="btn btn-sm btn-warning" href="{{route('parking_spot.edit', $parking_spot)}}">Editar</a>
+                            <button data-toggle="modal" data-target="#eliminarModal" data-id="{{$parking_spot->id}}" class="btn btn-sm btn-danger" type="button">Eliminar</button>
+                        @endrole
+                      </td>
                 </tr>
                 @endforeach
             </tbody>

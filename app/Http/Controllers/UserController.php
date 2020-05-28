@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('role:admin')->only('create', 'store', 'edit', 'update','destroy');
+        $this->middleware('role:admin')->only('index', 'create', 'store', 'edit', 'update','destroy');
     }
 
     /**

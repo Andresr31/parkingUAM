@@ -14,13 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('auth/login');
+    return redirect()->route('home');
 });
-
-Route::resource('user', 'UserController');
-Route::resource('parking_lot', 'Parking_lotController');
-Route::resource('parking_spot', 'Parking_spotController');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware('auth')->group(function(){    
+    Route::resource('user', 'UserController');
+    Route::resource('parking_lot', 'Parking_lotController');
+    Route::resource('parking_spot', 'Parking_spotController');
+
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::put('parking_spot/{parking_spot}/state', 'Parking_spotController@changeState')->name('parking_spot.state');
+});

@@ -12,6 +12,6 @@ class Parking_spot extends Model
      * @var array
      */
     protected $fillable = [
-        'parking_lot_id', 'position'
+        'parking_lot_id', 'position', 'state'
     ];
 }

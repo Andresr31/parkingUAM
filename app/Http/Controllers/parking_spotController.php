@@ -16,7 +16,9 @@ class parking_spotController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('role:admin');
+        $this->middleware('auth');
+    
+        $this->middleware('role:admin')->except('show','changeState');
     }
 
     /**
@@ -101,5 +103,17 @@ class parking_spotController extends Controller
     {
         $parking_spot->delete();
         return back()->with('status', 'El espacio se ha eliminado con éxito.');
+    }
+
+    public function changeState(Parking_spot $parking_spot)
+    {
+        if($parking_spot->state == 'Disponible'){
+            $parking_spot->state = 'Ocupado';
+        }else{
+            $parking_spot->state = 'Disponible';
+        }
+        $parking_spot->save();
+
+        return back()->with('status', 'El Estado del espacio se ha modificado con éxito.');
     }
 }
