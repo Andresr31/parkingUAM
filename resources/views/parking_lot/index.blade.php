@@ -4,50 +4,75 @@
 
 @section('content')
 
-<h1 class="text-center mb-4">Parqueaderos</h1>
-@role('admin')
-<a class="btn btn-success btn-block mt-4" href="{{route('parking_lot.create')}}">Registrar parqueadero</a>
-<a class="btn btn-success btn-block  mb-3" href="{{route('parking_spot.create')}}">Registrar espacio</a>
-@endrole
-<table class="table">
-    <thead>
-        <td>
-            Id
-        </td>
-        <td>
-            Nombre
-        </td>
-        <td>
-            Estado
-        </td>
-        <td>
-            Acciones
-        </td>
-    </thead>
-    <tbody>
-        @foreach($parking_lots as $parking_lot)
-        <tr>
-            <td>
-                {{$parking_lot->id}}
-            </td>
-            <td>
-                {{$parking_lot->name}}
-            </td>
-            <td>
-                {{$parking_lot->status}}
-            </td>
-            <td>
-                <a class="btn btn-sm btn-info" href="{{route('parking_lot.show', $parking_lot)}}">Ver</a>
+<div class="back">
+    <div class="container py-4">
+        <div class="card bg-dark col-md-12 mr-auto ml-auto">
+            @if (session('status'))
+            <div class="alert alert-success my-2" role="alert">
+               {{session('status')}}
+               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+             </div>
+           @endif
+            <h4 class="card-title h2 text-center py-3">Parqueaderos</h4>
+            <div class="row col-md-9 mr-auto ml-auto">
                 @role('admin')
-                <a class="btn btn-sm btn-warning" href="{{route('parking_lot.edit', $parking_lot)}}">Editar</a>
-                <button data-toggle="modal" data-target="#eliminarModal" data-id="{{$parking_lot->id}}" class="btn btn-sm btn-danger" type="button">Eliminar</button>
+                <div class="col">
+                    <a href="{{route('parking_lot.create')}}"
+                        class="btn btn-outline-light btn-block">{{ __('Registrar parqueadero') }}</a>
+                </div>
+                <div class="col">
+                    <a href="{{route('parking_spot.create')}}"
+                        class="btn btn-outline-light btn-block">{{ __('Registrar espacio') }}</a>
+                </div>
                 @endrole
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
-{{$parking_lots->links()}}
+            </div>
+            <div class="table-responsive col-md-10 mr-auto ml-auto py-3">
+                <table class="table text-dark table-light">
+                    <thead class="thead-dark bg-dark text-light">
+                        <td>
+                            Id
+                        </td>
+                        <td>
+                            Nombre
+                        </td>
+                        <td>
+                            Estado
+                        </td>
+                        <td>
+                            Acciones
+                        </td>
+                    </thead>
+                    <tbody>
+                        @foreach($parking_lots as $parking_lot)
+                        <tr>
+                            <td>
+                                {{$parking_lot->id}}
+                            </td>
+                            <td>
+                                {{$parking_lot->name}}
+                            </td>
+                            <td>
+                                {{$parking_lot->status}}
+                            </td>
+                            <td>
+                                <a class="btn btn-sm btn-info" href="{{route('parking_lot.show', $parking_lot)}}"><i class="fas text-dark fa-eye icon"></i></a> |
+                                @role('admin')
+                                <a class="btn btn-sm btn-warning" href="{{route('parking_lot.edit', $parking_lot)}}"><i class="fas text-dark fa-edit icon"></i></a> |
+                                <button data-toggle="modal" data-target="#eliminarModal" data-id="{{$parking_lot->id}}" class="btn btn-sm btn-danger" type="button"><i class="fas text-dark fa-trash-alt icon"></i></button>
+                                @endrole
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            {{$parking_lots->links()}}
+        </div> 
+    </div>
+</div>
+
 
 @role('admin')
 <div class="modal fade" id="eliminarModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">

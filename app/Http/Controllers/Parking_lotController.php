@@ -63,7 +63,7 @@ class Parking_lotController extends Controller
     public function show(Parking_lot $parking_lot)
     {
 
-        $parking_spots = $parking_lot->parking_spots()->paginate(10);
+        $parking_spots = $parking_lot->parking_spots()->paginate(6);
 
         return view("parking_lot.show", ['parking_lot'=>$parking_lot,'parking_spots'=>$parking_spots]);
     }

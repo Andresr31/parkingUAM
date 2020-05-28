@@ -29,7 +29,7 @@ class Parking_historyController extends Controller
      */
     public function index()
     {
-        $parking_histories = Parking_historie::orderBy('created_at','desc')->paginate(10);
+        $parking_histories = Parking_historie::orderBy('created_at','desc')->paginate(6);
         return view('parking_histories.index', ['parking_histories'=>$parking_histories]);
     }
 
@@ -55,7 +55,9 @@ class Parking_historyController extends Controller
     public function store(StoreParkingHistoryPost $request)
     {  
         $parking_history = Parking_historie::create($request->validated());
-
+        $parking_spot = $parking_history->spot()->get()->first();
+        $parking_spot->state = 'Ocupado';
+        $parking_spot->update();
         return back()->with('status', 'El registro se ha hecho con éxito.');
     }
 

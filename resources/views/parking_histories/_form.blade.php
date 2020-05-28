@@ -29,5 +29,6 @@
             
         </select>
     </div>
-
-    <input type="submit" value="Registrar" class="btn btn-success">
+    <div class="form-group pt-3">
+        <button type="submit" class="btn btn-block btn-outline-success">Registrar</button>
+    </div>

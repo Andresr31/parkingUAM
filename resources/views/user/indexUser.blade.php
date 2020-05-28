@@ -4,62 +4,86 @@
 
 @section('content')
 
-<h1 class="text-center">Vigilantes</h1>
-@role('admin')
-<a class="btn btn-success btn-block mt-3 mb-3" href="{{route('user.create')}}">Registrar vigilante</a>
-@endrole
+<div class="back">
+    <div class="container py-4">
+        <div class="card bg-dark col-md-12 mr-auto ml-auto">
+            @if (session('status'))
+            <div class="alert alert-success my-2" role="alert">
+               {{session('status')}}
+               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+             </div>
+           @endif
+            <h4 class="card-title h2 text-center py-3">Usuarios</h4>
+            <div class="row col-md-9 mr-auto ml-auto">
+                @role('admin')
+                <div class="col">
+                    <a href="{{route('user.create')}}"
+                        class="btn btn-outline-light btn-block">{{ __('Registrar usuario') }}</a>
+                </div>
+                @endrole
+            </div>
 
-<table class="table">
-    <thead>
-        <tr>
-            <td>
-                Id
-            </td>
-            <td>
-                Nombre
-            </td>
-            <td>
-                Teléfono
-            </td>
-            <td>
-                Tipo de dentifiación
-            </td>
-            <td>
-                Identifiación
-            </td>
-            <td>
-                Acciones
-            </td>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($users as $user)
-        <tr>
-            <td>
-                {{$user->id}}
-            </td>
-            <td>
-                {{$user->name}}
-            </td>
-            <td>
-                {{$user->phone}}
-            </td>
-            <td>
-                {{$user->identification_type}}
-            </td>
-            <td>
-                {{$user->identification_number}}
-            </td>
-            <td>
-                <a class="btn btn-sm btn-info" href="{{route('user.show', $user)}}">Ver</a>
-                <a class="btn btn-sm btn-warning" href="{{route('user.edit', $user)}}">Editar</a>
-                <button data-toggle="modal" data-target="#eliminarModal" data-id="{{$user->id}}" class="btn btn-sm btn-danger" type="button">Eliminar</button>
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
-{{$users->links()}}
+            <div class="table-responsive col-md-10 mr-auto ml-auto py-3">
+                <table class="table text-dark table-light">
+                    <thead class="thead-dark bg-dark text-light">
+                        <tr>
+                            <td>
+                                Id
+                            </td>
+                            <td>
+                                Nombre
+                            </td>
+                            <td>
+                                Teléfono
+                            </td>
+                            <td>
+                                Tipo de dentifiación
+                            </td>
+                            <td>
+                                Identifiación
+                            </td>
+                            <td>
+                                Acciones
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($users as $user)
+                        <tr>
+                            <td>
+                                {{$user->id}}
+                            </td>
+                            <td>
+                                {{$user->name}}
+                            </td>
+                            <td>
+                                {{$user->phone}}
+                            </td>
+                            <td>
+                                {{$user->identification_type}}
+                            </td>
+                            <td>
+                                {{$user->identification_number}}
+                            </td>
+                            <td>
+                                <a class="btn btn-sm btn-info" href="{{route('user.show', $user)}}"><i class="fas text-dark fa-eye icon"></i></a> |
+                                <a class="btn btn-sm btn-warning" href="{{route('user.edit', $user)}}"><i class="fas text-dark fa-edit icon"></i></a> |
+                                <button data-toggle="modal" data-target="#eliminarModal" data-id="{{$user->id}}" class="btn btn-sm btn-danger" type="button"><i class="fas text-dark fa-trash-alt icon"></i></button>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            {{$users->links()}}
+        </div>
+            
+            
+    </div>
+</div>
+
 
 <div class="modal fade" id="eliminarModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

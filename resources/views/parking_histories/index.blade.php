@@ -4,65 +4,84 @@
 
 @section('content')
 
-<h1 class="text-center">Historial de parqueos</h1>
-
-<a class="btn btn-success btn-block mt-3 mb-3" href="{{route('parking_history.create')}}">Registrar ingreso</a>
-
-<table class="table">
-    <thead>
-        <td>
-            Id
-        </td>
-        <td>
-            Placa
-        </td>
-        <td>
-            Parqueadero
-        </td>
-        <td>
-            Posicion
-        </td>
-        <td>
-            Pagado
-        </td>
-        <td>
-            Acciones
-        </td>
-    </thead>
-    <tbody>
-        @foreach($parking_histories as $parking_history)
-        <tr>
-            <td>
-                {{$parking_history->id}}
-            </td>
-            <td>
-                {{$parking_history->plate}}
-            </td>
-            <td>
-                {{$parking_history->spot->parking_lot->name}}
-            </td>
-            <td>
-                {{$parking_history->spot->position}}
-            </td>             
-            <td>
-                @if ($parking_history->paid == 1)
-                    Si
-                @else
-                    No
-                @endif
-            </td>
-            <td>
-                <a class="btn btn-sm btn-info" href="{{route('parking_history.show', $parking_history)}}">Ver</a>
-                @role('admin')  
-                    <a class="btn btn-sm btn-warning" href="{{route('parking_history.edit', $parking_history)}}">Editar</a>
-                    <button data-toggle="modal" data-target="#eliminarModal" data-id="{{$parking_history->id}}" class="btn btn-sm btn-danger" type="button">Eliminar</button>
-                @endrole
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
-{{$parking_histories->links()}}
+<div class="back">
+    <div class="container py-4">
+        <div class="card bg-dark col-md-12 mr-auto ml-auto">
+            @if (session('status'))
+            <div class="alert alert-success my-2" role="alert">
+               {{session('status')}}
+               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+             </div>
+           @endif
+            <h4 class="card-title h2 text-center py-3">Historial de parqueos</h4>
+            <div class="row col-md-9 mr-auto ml-auto">
+                <div class="col">
+                    <a href="{{route('parking_history.create')}}"
+                        class="btn btn-outline-light btn-block">{{ __('Registrar ingreso') }}</a>
+                </div>
+            </div>
+            <div class="table-responsive col-md-10 mr-auto ml-auto py-3">
+                <table class="table text-dark table-light">
+                    <thead class="thead-dark bg-dark text-light">
+                        <td>
+                            Id
+                        </td>
+                        <td>
+                            Placa
+                        </td>
+                        <td>
+                            Parqueadero
+                        </td>
+                        <td>
+                            Posicion
+                        </td>
+                        <td>
+                            Pagado
+                        </td>
+                        <td>
+                            Acciones
+                        </td>
+                    </thead>
+                    <tbody>
+                        @foreach($parking_histories as $parking_history)
+                        <tr>
+                            <td>
+                                {{$parking_history->id}}
+                            </td>
+                            <td>
+                                {{$parking_history->plate}}
+                            </td>
+                            <td>
+                                {{$parking_history->spot->parking_lot->name}}
+                            </td>
+                            <td>
+                                {{$parking_history->spot->position}}
+                            </td>             
+                            <td>
+                                @if ($parking_history->paid == 1)
+                                    Si
+                                @else
+                                    No
+                                @endif
+                            </td>
+                            <td>
+                                <a class="btn btn-sm btn-info" href="{{route('parking_history.show', $parking_history)}}"><i class="fas text-dark fa-eye icon"></i></a> |
+                                @role('admin')  
+                                    <a class="btn btn-sm btn-warning" href="{{route('parking_history.edit', $parking_history)}}"><i class="fas text-dark fa-edit icon"></i></a> |
+                                    <button data-toggle="modal" data-target="#eliminarModal" data-id="{{$parking_history->id}}" class="btn btn-sm btn-danger" type="button"><i class="fas text-dark fa-trash-alt icon"></i></button>
+                                @endrole
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            {{$parking_histories->links()}}
+        </div> 
+    </div>
+</div>
 
 <div class="modal fade" id="eliminarModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
