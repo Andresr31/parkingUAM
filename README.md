@@ -85,16 +85,15 @@ REMEMBER, when cloning the repository, execute the following commands:
 create .env file from .env.example file
 Create the parkingUAM database and modify the .env file to match
 
-npm install
-composer update
-composer install
-composer require doctrine/dbal
+$ npm install.
+$ composer update.
+$ composer install.
+$ composer require doctrine/dbal.
 
-
-php artisan optimize:clear
-php artisan migrate:refresh --seed
-php artisan permission:create-role admin
-php artisan permission:create-role vigilante
+$ php artisan optimize:clear.
+$ php artisan migrate:refresh --seed.
+$ php artisan permission:create-role admin.
+$ php artisan permission:create-role vigilante.
 
 
 ----------------------------------------------------------------------------
