@@ -40,7 +40,7 @@ class Parking_historyController extends Controller
      */
     public function create()
     {
-        $users = User::all();
+        $users = User::where('role','useruam')->get();
         $parking_spots = Parking_spot::where("state",'Disponible')->get();
         
         return view("parking_histories.create", ['parking_history'=>new Parking_historie(),'users'=>$users, 'parking_spots'=>$parking_spots]);
@@ -80,7 +80,7 @@ class Parking_historyController extends Controller
      */
     public function edit(Parking_historie $parking_history)
     {
-        $users = User::all();
+        $users = User::where('role','useruam')->get();;
         $parking_spots = Parking_spot::where("state",'Disponible')->get();
         return view("parking_histories.edit", ['parking_history'=>$parking_history,'users'=>$users, 'parking_spots'=>$parking_spots]);
     }

@@ -14,4 +14,9 @@ class Parking_spot extends Model
     protected $fillable = [
         'parking_lot_id', 'position', 'state'
     ];
+
+    public function parking_lot()
+    {
+        return $this->belongsTo('App\Parking_lot');
+    }
 }

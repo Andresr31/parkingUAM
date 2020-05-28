@@ -17,7 +17,7 @@
         <label for="name">Posición</label>
         <select class="form-control" name="parking_spot_id" id="parking_spot_id">
             @foreach ($parking_spots as $parking_spot)
-                <option value="{{$parking_spot->id}}">{{$parking_spot->position}}</option>
+                <option value="{{$parking_spot->id}}">{{$parking_spot->position}}--{{ $parking_spot->parking_lot->name }}</option>
             @endforeach
         </select>
 

@@ -45,7 +45,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="{{route('parking_history.index')}}">Listar</a>
-                        <a class="dropdown-item" href="{{ route('parking_lot.create') }}">Registrar</a>
+                        <a class="dropdown-item" href="{{ route('parking_history.create') }}">Registrar</a>
                     </div>
                 </li>
             </ul>

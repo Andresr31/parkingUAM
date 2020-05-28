@@ -15,7 +15,7 @@
     </div>
     <div class="form-group">
         <label for="name">Espacio</label>
-        <input readonly type="text" class="form-control" value="{{$parking_spot->position}}" name="name" id="name">
+        <input readonly type="text" class="form-control" value="{{$parking_spot->position}}--{{ $parking_spot->parking_lot->name }}" name="name" id="name">
     </div>
 
     <div class="form-group">

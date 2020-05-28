@@ -17,6 +17,12 @@
             Placa
         </td>
         <td>
+            Parqueadero
+        </td>
+        <td>
+            Posicion
+        </td>
+        <td>
             Pagado
         </td>
         <td>
@@ -32,6 +38,12 @@
             <td>
                 {{$parking_history->plate}}
             </td>
+            <td>
+                {{$parking_history->spot->parking_lot->name}}
+            </td>
+            <td>
+                {{$parking_history->spot->position}}
+            </td>             
             <td>
                 @if ($parking_history->paid == 1)
                     Si
