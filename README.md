@@ -77,19 +77,24 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
 # parkingUAM
 
 REMEMBER, when cloning the repository, execute the following commands:
-
-npm install
-composer install
-
+---------------------------------------------------------------------------
 create .env file from .env.example file
 
 Create the parkingUAM database and modify the .env file to match
 
-php artisan migrate
+$ npm install.
+$ composer update.
+$ composer install.
+$ composer require doctrine/dbal.
 
-php artisan key:generate
+$ php artisan optimize:clear.
+$ php artisan migrate:refresh --seed.
+$ php artisan permission:create-role admin.
+$ php artisan permission:create-role vigilante.
 
-php artisan db:seed
+
+----------------------------------------------------------------------------
