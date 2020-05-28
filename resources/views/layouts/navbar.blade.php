@@ -38,6 +38,16 @@
                     </div>
                 </li>
                 @endrole
+                <!-- Historial de parqueos -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Historial de parqueos
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="{{route('parking_history.index')}}">Listar</a>
+                        <a class="dropdown-item" href="{{ route('parking_lot.create') }}">Registrar</a>
+                    </div>
+                </li>
             </ul>
             @endAuth
 
