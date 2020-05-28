@@ -5,7 +5,7 @@
 <div class="back">
     <div class="container py-4 ml-auto mr-auto">
         <div class="row">
-            {{-- @role('admin') --}}
+            @role('admin')
             <div class="col-sm-8 text-center ml-auto mr-auto">
             <div class="card card-dark bg-dark text-light">
                 <div class="card-body">
@@ -24,7 +24,7 @@
                 </div>
             </div>
             </div>
-            {{-- @endrole --}}
+            @endrole
             <div class="col-sm-8 pt-4 text-center ml-auto mr-auto">
                 <div class="card card-dark bg-dark text-light">
                     <div class="card-body">

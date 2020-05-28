@@ -48,7 +48,21 @@
                         <a class="dropdown-item" href="{{ route('parking_history.create') }}">Registrar</a>
                     </div>
                 </li>
+
+                <!-- Fecha actual -->
+                <li class="nav-item pl-4">
+                    <div class="row">
+                        <h4 class="my-2 pl-4 h5 text-light col-sm-4">Fecha: </h4>
+                        <h5 class="text-light h6 col-sm-8 pl-3 mt-3">{{date('Y-m-d')}}</h5>
+                    </div>
+                </li>
+
+
+
             </ul>
+
+
+
             @endAuth
 
             <!-- Right Side Of Navbar -->

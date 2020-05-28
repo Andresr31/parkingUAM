@@ -41,6 +41,9 @@
                             Pagado
                         </td>
                         <td>
+                            Fecha
+                        </td>
+                        <td>
                             Acciones
                         </td>
                     </thead>
@@ -65,6 +68,9 @@
                                 @else
                                     No
                                 @endif
+                            </td>
+                            <td>
+                                {{$parking_history->created_at}}
                             </td>
                             <td>
                                 <a class="btn btn-sm btn-info" href="{{route('parking_history.show', $parking_history)}}"><i class="fas text-dark fa-eye icon"></i></a> |
